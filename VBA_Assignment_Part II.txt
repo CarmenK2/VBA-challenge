@@ -1,0 +1,44 @@
+      
+        '--------------------------------------------------------
+        'PART II
+        '--------------------------------------------------------
+        
+        'Find out the last rowb from the summary table
+        'To get the extended summary table
+        
+                
+            lastrowB = ws.Cells(Rows.Count, "I").End(xlUp).Row
+            
+            MaxIncrease = WorksheetFunction.Max(ws.Range("K2:K" & lastrowB))
+            MaxDecrease = WorksheetFunction.Min(ws.Range("K2:K" & lastrowB))
+            MaxVolume = WorksheetFunction.Max(ws.Range("L2:L" & lastrowB))
+            
+            Tickername_MaxInc = Cells(j, 9).Value
+            Tickername_MaxDec = Cells(j, 9).Value
+            Ticketname_MaxVol = Cells(j, 9).Value
+            
+            
+            For j = 2 To lastrowB
+                        
+                If Cells(j, 3).Value = MaxIncrease Then
+                    Cells(2, 17).Value = MaxIncrease
+                    Cells(2, 16).Value = Tickername_MaxInc
+                End If
+                
+              
+                If Cells(j, 3).Value = MaxDecrease Then
+                    Cells(2, 17).Value = MaxDecrease
+                    Cells(2, 16).Value = Tickername_MaxDec
+                    
+                End If
+                
+                If Cells(j, 4).Value = MaxVolume Then
+                    Cells(2, 17).Value = MaxVolume
+                    Cells(2, 16).Value = Tickername_MaxVol
+                  
+                End If
+                
+              Next j
+              
+                     
+           
